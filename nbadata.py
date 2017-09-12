@@ -31,6 +31,9 @@ if __name__ == '__main__':
     import csv
     import copy
     import matplotlib.pyplot as plt
+    import pandas as pd
+    from pandas import DataFrame
+    import numpy as np
     with open('2016-2017Regular.csv','rb') as f:
         readers = csv.reader(f)
         rows = [row for row in readers]       
@@ -59,3 +62,6 @@ if __name__ == '__main__':
         i.pop(0)
     str2float2d(d[2:])
     plotregular()
+    frame = DataFrame(np.array(d).T,index=pd.Index(d[1]),columns=[i[0] for i in p])
+    frame1 = frame.drop('PLAYER',axis=1)
+
